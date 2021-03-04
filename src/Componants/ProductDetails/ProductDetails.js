@@ -4,12 +4,12 @@ import fakeData from "../../img/fakeData";
 import Product from "../Product/Product";
 
 function ProductDetails() {
-  const {productKey} = useParams();
-  const product =  fakeData.find(pd => pd.key === productKey)
-console.log(product)
+  const { productKey } = useParams();
+  const product = fakeData.find((pd) => pd.key === productKey);
+  console.log(product);
   return (
     <div>
-      <h1>This is details..............</h1>
+      <h1>This is all about!</h1>
       <Product showBtn={false} product={product} />
     </div>
   );
