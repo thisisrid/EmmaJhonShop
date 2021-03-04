@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Product.css";
+
 const Product = (props) => {
-  const { name, img, seller, price, stock, star, features,key } = props.product;
+  const { name, img, seller, price, stock, star, features, key } = props.product;
   //  console.log(props.product.key)
   return (
     <div className="single-product-container">
@@ -35,7 +36,7 @@ const Product = (props) => {
               </ul>{" "}
             </div>
           </div>
-          <button
+          { props.showBtn && <button
             onClick={() => {
               props.clickHandle(props.product);
             }}
@@ -43,7 +44,7 @@ const Product = (props) => {
           >
             <FontAwesomeIcon icon={faShoppingCart} />
             Add To Cart
-          </button>
+          </button>}
         </div>
       </div>
     </div>

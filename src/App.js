@@ -5,9 +5,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useRouteMatch,
-  useParams
 } from "react-router-dom";
 import Order from "./Componants/Order/Order";
 import NotFound from "./Componants/NotFound/NotFound";
@@ -19,9 +16,7 @@ function App() {
     <Router>
       <Header></Header>
 
-      {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-      <Switch>
+    <Switch>
         <Route path="/shop">
           <Shop></Shop>
         </Route>
