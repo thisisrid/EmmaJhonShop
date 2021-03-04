@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import fakeData from "../../img/fakeData";
 import { getDatabaseCart } from "../../img/utilities/databaseManager";
+import Oredereditems from "../Ordereditems/Ordereditems";
+import "./Order.css";
 
 function Order() {
   const [cart, setCart] = useState([]);
@@ -15,8 +17,9 @@ function Order() {
     setCart(cartProducts);
   }, []);
   return (
-    <div>
-      <h1>This is Order {cart.length}</h1>
+    <div className="review-items">
+      <h1>You Ordered {cart.length} product[s]</h1>
+      { cart.map(pd => <Oredereditems product={pd} />)}
     </div>
   );
 }
