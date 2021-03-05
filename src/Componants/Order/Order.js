@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import fakeData from "../../img/fakeData";
+import fakeData from "../../Info/fakeData";
 import {
   getDatabaseCart,
+  processOrder,
   removeFromDatabaseCart
-} from "../../img/utilities/databaseManager";
+} from "../../Info/utilities/databaseManager";
 import Cart from "../Cart/Cart";
+import { Link } from "react-router-dom";
 import Oredereditems from "../Ordereditems/Ordereditems";
+import ThankYou from '../../Info/images/giphy.gif'
 import "./Order.css";
 
 function Order() {
@@ -25,10 +28,20 @@ function Order() {
     setCart(updatedCart);
     removeFromDatabaseCart(ky);
   };
+
+  const [confirmed, setConfirmed] = useState(false)
+
+  const clickToConfirm = () => {
+    console.log("clicked");
+    setCart([]);
+    processOrder();
+    setConfirmed(true);
+  };
+
   return (
     <div className="shop-container">
       <div className="product-container">
-        <h1>You Ordered {cart.length} product[s]</h1>
+        {/* <h1>You Ordered {cart.length} product[s]</h1> */}
         {cart.map((pd) => (
           <Oredereditems
             removeProduct={removeProduct}
@@ -36,8 +49,16 @@ function Order() {
             key={pd.key}
           />
         ))}
+        {confirmed && <img src={ThankYou} alt='Thank You'/>}
       </div>
-      <Cart cart={cart} />
+      <Cart cart={cart}>
+        <Link to="/order">
+          <button onClick={clickToConfirm} className="btn-custom">
+            {" "}
+            Confirm Order{" "}
+          </button>
+        </Link>
+      </Cart>
     </div>
   );
 }

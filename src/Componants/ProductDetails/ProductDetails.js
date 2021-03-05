@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import fakeData from "../../img/fakeData";
+import fakeData from "../../Info/fakeData";
 import Product from "../Product/Product";
 
 function ProductDetails() {
