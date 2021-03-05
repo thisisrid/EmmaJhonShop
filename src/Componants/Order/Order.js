@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import fakeData from "../../img/fakeData";
-import { getDatabaseCart } from "../../img/utilities/databaseManager";
+import {
+  getDatabaseCart,
+  removeFromDatabaseCart
+} from "../../img/utilities/databaseManager";
+import Cart from "../Cart/Cart";
 import Oredereditems from "../Ordereditems/Ordereditems";
 import "./Order.css";
 
@@ -16,10 +20,24 @@ function Order() {
     });
     setCart(cartProducts);
   }, []);
+  const removeProduct = (ky) => {
+    const updatedCart = cart.filter((pd) => pd.key !== ky);
+    setCart(updatedCart);
+    removeFromDatabaseCart(ky);
+  };
   return (
-    <div className="review-items">
-      <h1>You Ordered {cart.length} product[s]</h1>
-      { cart.map(pd => <Oredereditems product={pd} />)}
+    <div className="shop-container">
+      <div className="product-container">
+        <h1>You Ordered {cart.length} product[s]</h1>
+        {cart.map((pd) => (
+          <Oredereditems
+            removeProduct={removeProduct}
+            product={pd}
+            key={pd.key}
+          />
+        ))}
+      </div>
+      <Cart cart={cart} />
     </div>
   );
 }

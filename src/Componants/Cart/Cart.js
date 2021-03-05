@@ -5,7 +5,7 @@ const Cart = (props) => {
   const cart = props.cart;
 
   let productPrice = 0;
-  cart.map((arr) => (productPrice = productPrice + arr.price));
+  cart.map((arr) => (productPrice = productPrice + arr.price * arr.quantity));
   let shipping = 0;
   if (productPrice < 35 && productPrice !== 0) {
     shipping = 4.99;
