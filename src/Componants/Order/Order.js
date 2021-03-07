@@ -8,7 +8,7 @@ import {
 import Cart from "../Cart/Cart";
 import { Link } from "react-router-dom";
 import Oredereditems from "../Ordereditems/Ordereditems";
-import ThankYou from '../../Info/images/giphy.gif'
+import ThankYou from "../../Images/giphy.gif";
 import "./Order.css";
 
 function Order() {
@@ -29,7 +29,7 @@ function Order() {
     removeFromDatabaseCart(ky);
   };
 
-  const [confirmed, setConfirmed] = useState(false)
+  const [confirmed, setConfirmed] = useState(false);
 
   const clickToConfirm = () => {
     console.log("clicked");
@@ -49,7 +49,7 @@ function Order() {
             key={pd.key}
           />
         ))}
-        {confirmed && <img src={ThankYou} alt='Thank You'/>}
+        {confirmed && <img src={ThankYou} alt="Thank You" />}
       </div>
       <Cart cart={cart}>
         <Link to="/order">
